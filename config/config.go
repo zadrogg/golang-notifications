@@ -29,7 +29,7 @@ type server struct {
 func GetConfig() *Config {
 	return &Config{
 		Server: server{
-			Url: getEnv("SERVER", "localhost:3000"),
+			Url: getEnv("SERVER", ":3000"),
 		},
 		Mail: mail{
 			Smtp:     getEnv("SMTP_SERVER", ""),

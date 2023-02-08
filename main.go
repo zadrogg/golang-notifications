@@ -1,6 +1,14 @@
-package notifications
+package main
 
-import "github.com/joho/godotenv"
+import (
+	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
+	"github.com/sirupsen/logrus"
+	"net/http"
+	"notifications/config"
+	"notifications/handlers"
+	r "notifications/routes"
+)
 
 func init() {
 	//load values from .env
@@ -19,5 +27,14 @@ func init() {
 // @BasePath  /
 // @schemes http
 func main() {
+	conf := config.GetConfig()
+	routes := chi.NewRouter()
 
+	logrus.Info("run server")
+
+	// апи
+	r.ApiRoutes(routes)
+
+	// запуск сервера
+	handlers.Error(http.ListenAndServe(conf.Server.Url, routes))
 }
