@@ -1,8 +1,9 @@
 ### Send POST request with json body
-POST http://localhost:3000/telegram
+POST http://localhost:3000/mail
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "mail": "koreecrulit@yandex.ru",
+  "message": "content",
+  "subject": "test"
 }

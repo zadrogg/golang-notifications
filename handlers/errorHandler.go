@@ -33,9 +33,9 @@ func sendThrow(w http.ResponseWriter, err error, code int) {
 }
 
 func Throw500(w http.ResponseWriter, err error) {
-	sendThrow(w, err, 500)
+	sendThrow(w, err, http.StatusInternalServerError)
 }
 
 func Throw400(w http.ResponseWriter, err error) {
-	sendThrow(w, err, 400)
+	sendThrow(w, err, http.StatusBadRequest)
 }

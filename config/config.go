@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/joho/godotenv"
 	"os"
 	"strconv"
 )
@@ -24,6 +25,13 @@ type mail struct {
 
 type server struct {
 	Url string
+}
+
+func init() {
+	//load values from .env
+	if err := godotenv.Load(); err != nil {
+		panic("No .env file found")
+	}
 }
 
 func GetConfig() *Config {
